@@ -21,8 +21,8 @@ Alat CLI untuk deploy kontrak token ERC20 dan distribusi token/native asset di j
 ## Instalasi
 1. Clone repositori:
 ```bash
-git clone [URL_REPOSITORIUM_ANDA]
-cd nama-repositori
+git clone https://github.com/Endijuan33/Somnia-Testnet-deployer.git
+cd Somnia-Testnet-deployer
 ```
 
 2. Instal dependensi:
