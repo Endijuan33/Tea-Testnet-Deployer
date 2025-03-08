@@ -79,7 +79,7 @@ npm run start
 ## Keamanan
 - 🚫 Jangan pernah membagikan file `.env` atau `random_wallets.json`
 - 🔐 Private key disimpan hanya di environment variable lokal
-- ⚠️ Jangan lupa daratan, gunakan dengan bijak tanpa menyalahi aturan - DWYOR!
+- ⚠️ Jangan tamak, gunakan dengan bijak tanpa menyalahi aturan - DWYOR!
 
 ## Catatan Penting
 - Pastikan wallet utama memiliki saldo STT yang cukup
