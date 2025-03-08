@@ -1,0 +1,24 @@
+{
+  "name": "somnia-testnet",
+  "version": "1.0.0",
+  "description": "Automated script for Somnia Testnet: deploy contract, send native token (STT), and send ERC20 token randomly.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "dotenv": "^16.0.0",
+    "ethers": "^5.7.2",
+    "inquirer": "^9.1.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-verify": "^2.0.13",
+    "@openzeppelin/contracts": "^4.9.0",
+    "hardhat": "^2.22.1",
+    "solc": "^0.8.28"
+  },
+  "author": "ENDCORE",
+  "license": "MIT"
+}
