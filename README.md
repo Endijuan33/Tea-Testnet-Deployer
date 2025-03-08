@@ -95,7 +95,7 @@ Untuk menjalankan skrip:
 2. Isi file `.env` dengan konfigurasi yang benar
 3. Jalankan perintah:
 ```bash
-node index.js
+node main.js
 ```
 
 Ikuti petunjuk menu interaktif yang muncul di CLI. Untuk operasi pertama, disarankan memulai dengan deploy kontrak terlebih dahulu sebelum melakukan distribusi token.
