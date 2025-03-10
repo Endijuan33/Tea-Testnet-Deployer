@@ -14,7 +14,7 @@ const RPC_URL = process.env.RPC_URL || "https://dream-rpc.somnia.network";
 const CHAIN_ID = process.env.CHAIN_ID || 50312;
 let CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS || "";
 const EXPLORER_URL = process.env.EXPLORER_URL || "";
-const DAILY_LIMIT = 10000;
+const DAILY_LIMIT = 5000;
 
 const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
 const wallet = new ethers.Wallet(MAIN_PRIVATE_KEY, provider);
@@ -346,23 +346,27 @@ async function sendNativeToken() {
 
   const counter = getDailyCounter();
   if (counter.count + jumlahTransaksi > DAILY_LIMIT) {
-    logError(`Batas harian ${DAILY_LIMIT} transaksi telah tercapai atau tidak cukup sisa. Sisa transaksi hari ini: ${DAILY_LIMIT - counter.count}`);
+    logError(
+      `Batas harian ${DAILY_LIMIT} transaksi telah tercapai atau tidak cukup sisa. Sisa transaksi hari ini: ${DAILY_LIMIT - counter.count}`
+    );
     return;
   }
-
-  const newWallets = createNewWallets(jumlahTransaksi);
-  shuffleArray(newWallets);
 
   printSeparator();
   logInfo(`Memulai pengiriman ${jumlahTransaksi} transaksi native token...\n`);
 
   let completed = 0;
-  for (let i = 0; i < newWallets.length; i++) {
-    const recipient = newWallets[i].address;
+  for (let i = 0; i < jumlahTransaksi; i++) {
+    let newWallet = createNewWallet();
+    while (getWalletData().find(w => w.address.toLowerCase() === newWallet.address.toLowerCase())) {
+      newWallet = createNewWallet();
+    }
+    addWalletIfNotExists(newWallet);
+    const recipient = newWallet.address;
     const randomAmount = (0.001 + Math.random() * (0.0025 - 0.001)).toFixed(6);
     const amount = ethers.utils.parseUnits(randomAmount, 18);
 
-    logInfo(`Mengirim ${randomAmount} STT ke ${recipient}...`);
+    logInfo(`Transaksi ${i + 1}: Mengirim ${randomAmount} STT ke ${recipient}...`);
 
     if (!CONTRACT_ADDRESS) {
       logWarning("Kontrak belum dideploy. Menggunakan wallet utama secara langsung.");
@@ -422,7 +426,8 @@ async function sendNativeToken() {
         }
       }
     }
-    if (i < newWallets.length - 1) {
+
+    if (i < jumlahTransaksi - 1) {
       const randomDelay = Math.floor(Math.random() * (60000 - 15000 + 1)) + 15000;
       logInfo(`Menunggu ${(randomDelay / 1000).toFixed(2)} detik sebelum transaksi berikutnya...\n`);
       await delay(randomDelay);
@@ -480,20 +485,25 @@ async function sendERC20Token() {
 
   const counter = getDailyCounter();
   if (counter.count + Number(answers.jumlahTransaksi) > DAILY_LIMIT) {
-    logError(`Batas harian ${DAILY_LIMIT} transaksi telah tercapai atau tidak cukup sisa. Sisa transaksi hari ini: ${DAILY_LIMIT - counter.count}`);
+    logError(
+      `Batas harian ${DAILY_LIMIT} transaksi telah tercapai atau tidak cukup sisa. Sisa transaksi hari ini: ${DAILY_LIMIT - counter.count}`
+    );
     return;
   }
-
-  const newWallets = createNewWallets(Number(answers.jumlahTransaksi));
-  shuffleArray(newWallets);
 
   printSeparator();
   logInfo(`Memulai pengiriman ${answers.jumlahTransaksi} transaksi token ERC20...\n`);
 
   let completed = 0;
-  for (let i = 0; i < newWallets.length; i++) {
-    const recipient = newWallets[i].address;
-    logInfo(`Mengirim token ke ${recipient}...`);
+  const totalTx = Number(answers.jumlahTransaksi);
+  for (let i = 0; i < totalTx; i++) {
+    let newWallet = createNewWallet();
+    while (getWalletData().find(w => w.address.toLowerCase() === newWallet.address.toLowerCase())) {
+      newWallet = createNewWallet();
+    }
+    addWalletIfNotExists(newWallet);
+    const recipient = newWallet.address;
+    logInfo(`Transaksi ${i + 1}: Mengirim token ke ${recipient}...`);
     try {
       const tx = await contractInstance.sendToken(recipient, amountPerTxInSmallestUnit);
       logInfo(`Tx Hash: ${tx.hash}`);
@@ -504,10 +514,12 @@ async function sendERC20Token() {
       await tx.wait();
       logSuccess("Transfer berhasil.");
       completed++;
+      const current = getDailyCounter();
+      updateDailyCounter(current.count + 1);
     } catch (err) {
       logError(`Transfer gagal: ${err}`);
     }
-    if (i < newWallets.length - 1) {
+    if (i < totalTx - 1) {
       const randomDelay = Math.floor(Math.random() * (80000 - 10000 + 1)) + 10000;
       logInfo(`Menunggu ${(randomDelay / 1000).toFixed(2)} detik sebelum transaksi berikutnya...\n`);
       await delay(randomDelay);
