@@ -67,7 +67,7 @@ npm run start
 2. **Kirim Native Token (STT)**  
    - Distribusi STT ke alamat acak
    - Nilai random: 0.001-0.0025 STT per transaksi
-   - Batas harian: 10,000 transaksi/hari
+   - Batas harian: 5,000 transaksi/hari
    - Delay acak antara 15-60 detik antar transaksi
 
 3. **Kirim Token ERC20**  
