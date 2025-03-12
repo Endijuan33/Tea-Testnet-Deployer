@@ -1,103 +1,132 @@
 # Somnia-Testnet-deployer
 
-# Automated Token Deployment and Distribution Tool
+ **Automated Token Deployment and Distribution Tool**
 
-Alat CLI untuk deploy kontrak token ERC20 dan distribusi token/native asset di jaringan Somnia Testnet.
+- A CLI tool for deploying ERC20 token contracts and distributing tokens/native assets on the Somnia Testnet.
 
-## Fitur Utama
-- 🛠️ Deploy kontrak ERC20 custom dengan verifikasi otomatis
-- 💸 Distribusi native token (STT) ke alamat acak dengan nilai random
-- 🪙 Distribusi token ERC20 ke alamat acak
-- 🔒 Manajemen wallet otomatis dengan daily transaction limit
-- ⏳ Simulasi pola transaksi realistis dengan delay acak
-- 🔍 Integrasi dengan explorer blockchain Somnia
+## Key Features
+- 🛠️ Deploy custom ERC20 contracts with automatic verification
+- 💸 Distribute native tokens (STT) to random addresses with random values
+- 🪙 Distribute ERC20 tokens to random addresses
+- 🔒 Automatic wallet management with daily transaction limits
+- ⏳ Realistic transaction pattern simulation with random delays
+- 🔍 Integrated with Somnia blockchain explorer
 
-## Prasyarat
+## Prerequisites
 - Node.js v18+
 - npm v9+
-- Hardhat (akan diinstal otomatis jika belum ada)
-- Akun blockchain dengan saldo STT
+- Hardhat (will be installed automatically if not present)
+- Blockchain account with STT balance
 
-## Instalasi
-1. Clone repositori:
+## Installation
+1. Clone repository:
 ```bash
 git clone https://github.com/Endijuan33/Somnia-Testnet-deployer.git
 cd Somnia-Testnet-deployer
 ```
 
-2. Instal dependensi:
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. copy file .env.example menjadi .env dan isi dengan konfigurasi yang diperlukan:
+3. Copy .env.example to .env and configure required settings:
 ```bash
-MAIN_PRIVATE_KEY=0xprivate_key_wallet_anda
-RPC_URL=https://dream-rpc.somnia.network
+MAIN_PRIVATE_KEY=0xyour_wallet_private_key
+RPC_URL=https://dream-rpc.somnia.network,https://rpc.ankr.com/somnia_testnet,https://somnia-poc.w3us.site/api/eth-rpc
 CHAIN_ID=50312
 EXPLORER_URL=https://shannon-explorer.somnia.network/
 CONTRACT_ADDRESS=
 ```
 
-## Konfigurasi
-| Variabel           | Deskripsi                                      | Contoh Nilai                          |
-|--------------------|------------------------------------------------|---------------------------------------|
-| MAIN_PRIVATE_KEY   | Private key wallet utama                       | 0xabc123...                           |
-| RPC_URL            | URL RPC jaringan Somnia                        | https://dream-rpc.somnia.network      |
-| CHAIN_ID           | ID jaringan Somnia Testnet                     | 50312                                 |
-| CONTRACT_ADDRESS   | Alamat kontrak (diisi otomatis setelah deploy) | 0x...                                 |
-| EXPLORER_URL       | URL blockchain explorer                        | https://shannon-explorer.somnia.network |
+## Configuration
+| Variable            | Description                                      | Example Value                         |
+|---------------------|--------------------------------------------------|---------------------------------------|
+| MAIN_PRIVATE_KEY    | Main wallet's private key                        | 0xabc123...                           |
+| RPC_URL             | Somnia network RPC URL                           | https://dream-rpc.somnia.network      |
+| CHAIN_ID            | Somnia Testnet chain ID                          | 50312                                 |
+| CONTRACT_ADDRESS    | Contract address (auto-filled after deployment)  | 0x...                                 |
+| EXPLORER_URL        | Blockchain explorer URL                          | https://shannon-explorer.somnia.network |
 
-## Penggunaan
-Run Command:
+## Usage
+Run command:
 ```bash
 npm run start
 ```
+Follow the interactive menu instructions in the CLI. For first-time use, we recommend deploying a contract before distributing tokens.
 
-### Menu Utama
-1. **Deploy Kontrak Baru**  
-   - Membuat token ERC20 custom
-   - Akan memandu melalui input:
-     - Nama Token
-     - Simbol Token
-     - Jumlah Desimal
+Observe daily transaction limits and ensure the main wallet has sufficient balance for gas fees and token distribution.
+
+### Main Menu
+1. **Deploy New Contract**
+   - Create custom ERC20 token
+   - Guided input for:
+     - Token Name
+     - Token Symbol
+     - Decimal Places
      - Total Supply
-   - Otomatis verifikasi kontrak setelah deploy
+   - Automatic contract verification after deployment
 
-2. **Kirim Native Token (STT)**  
-   - Distribusi STT ke alamat acak
-   - Nilai random: 0.001-0.0025 STT per transaksi
-   - Batas harian: 5,000 transaksi/hari
-   - Delay acak antara 15-60 detik antar transaksi
+2. **Send Native Token (STT)**
+   - Distribute STT to random addresses
+   - Random value: 0.001-0.0025 STT per transaction
+   - Daily limit: 5,000 transactions/day
+   - Random delay between 15-60 seconds between transactions
 
-3. **Kirim Token ERC20**  
-   - Distribusi token ke alamat acak
-   - Input jumlah token per transaksi
-   - Menggunakan kontrak yang sudah dideploy
-   - Batas harian sama seperti native token
+3. **Send ERC20 Tokens**
+   - Distribute tokens to random addresses
+   - Input tokens amount per transaction
+   - Uses deployed contract
+   - Same daily limits as native token distribution
 
-## Keamanan
-- 🚫 Jangan pernah membagikan file `.env` atau `random_wallets.json`
-- 🔐 Private key disimpan hanya di environment variable lokal
-- ⚠️ Jangan tamak, gunakan dengan bijak tanpa menyalahi aturan - DWYOR!
+## Security
+- 🚫 Never share `.env` or `random_wallets.json` files
+- 🔐 Private keys stored only in local environment variables
+- ⚠️ Use responsibly and comply with network rules - DYOR!
 
-## Catatan Penting
-- Pastikan wallet utama memiliki saldo STT yang cukup
-- Verifikasi kontrak memerlukan Hardhat - akan diinstal otomatis
-- Transaksi gagal akan dilaporkan tanpa menghentikan proses
+## Important Notes
+- Ensure main wallet has sufficient STT balance
+- Contract verification requires Hardhat - will be auto-installed
+- Failed transactions will be reported without stopping the process
 
-## License
-MIT License
+To run the script:
 
-Untuk menjalankan skrip:
-
-1. Pastikan semua dependensi terinstal
-2. Isi file `.env` dengan konfigurasi yang benar
-3. Jalankan perintah:
+1. Ensure all dependencies are installed
+2. Configure `.env` file properly
+3. Run command:
 ```bash
-node main.js
+npm start
 ```
 
-Ikuti petunjuk menu interaktif yang muncul di CLI. Untuk operasi pertama, disarankan memulai dengan deploy kontrak terlebih dahulu sebelum melakukan distribusi token.
+## Updating the Script
+To get the latest version of the script and ensure you have all updates:
+```bash
+# Navigate to your project directory if you're not already there
+cd Somnia-Testnet-deployer
 
-Perhatikan batas harian transaksi dan pastikan wallet utama memiliki saldo yang cukup untuk gas fee dan distribusi token.
+# Fetch and merge latest changes from repository
+git pull origin main
+
+# Reinstall dependencies if there are package changes
+npm install
+```
+
+
+## License
+[MIT](https://github.com/Endijuan33/Somnia-Testnet-deployer/blob/main/LICENSE) License
+
+## Disclaimer
+⚠️ **Educational Use Only** 
+- This script is provided **exclusively for educational and testing purposes** on the Somnia Testnet
+- All transactions use **testnet assets** with no real monetary value
+- Not affiliated with or endorsed by Somnia or any blockchain entity
+- NO WARRANTIES expressed or implied - use at your own risk
+- Developers assume no liability for:
+  - Any financial losses
+  - Account bans
+  - Network disruptions
+  - Legal consequences of misuse
+- Mainnet use is **strictly discouraged** and may violate network policies
+- Users are solely responsible for complying with local regulations
+
+
