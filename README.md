@@ -67,10 +67,10 @@ Observe daily transaction limits and ensure the main wallet has sufficient balan
      - Total Supply
    - Automatic contract verification after deployment
 
-2. **Send Native Token (STT)**
+2. **Send Native Token (TEA)**
    - Distribute TEA to verified addresses
    - Daily limit: 5,000 transactions/day or based on addresses.txt files
-   - Random delay between 15-60 seconds between transactions
+   - Random delay between 10-60 seconds between transactions
 
 3. **Send ERC20 Tokens**
    - Distribute tokens to verified addresses
