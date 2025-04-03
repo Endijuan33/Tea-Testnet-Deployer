@@ -325,7 +325,7 @@ async function sendNativeToken() {
   const transactionsToSend = Math.min(remainingTransactions, addressesToProcess.length);
 
   printSeparator();
-  logInfo(`💸 Starting to send ${transactionsToSend} native token transactions to addresses from verified_addresses.txt...\n`);
+  logInfo(`💸 Starting to send ${transactionsToSend} native token transactions to address from verified_addresses.txt...\n`);
   let completed = 0;
 
   for (let i = 0; i < transactionsToSend; i++) {
@@ -444,7 +444,7 @@ async function sendERC20Token() {
   const totalTx = Math.min(remainingTransactions, addressesToProcess.length);
 
   printSeparator();
-  logInfo(`🪙 Starting to send ${totalTx} ERC20 token transactions to addresses from verified_addresses.txt...\n`);
+  logInfo(`🪙 Starting to send ${totalTx} ERC20 token transactions to address from verified_addresses.txt...\n`);
   let completed = 0;
 
   for (let i = 0; i < totalTx; i++) {
@@ -600,8 +600,8 @@ async function mainMenu() {
     const answer = await promptWithBack([
       { type: 'list', name: 'action', message: 'Choose an option (use arrow keys or numbers):', choices: [
           { name: '1. Deploy New Contract (Create ERC20 Token)', value: 'deploy' },
-          { name: '2. Send Native (TEA) to addresses in addresses.txt', value: 'sendNative' },
-          { name: '3. Send ERC20 Token to addresses in addresses.txt (if token deployed)', value: 'sendERC20' },
+          { name: '2. Send Native (TEA) to address in verified_addresses.txt', value: 'sendNative' },
+          { name: '3. Send ERC20 Token to address in verified_addresses.txt (if token deployed)', value: 'sendERC20' },
           { name: '4. Exit', value: 'exit' }
         ]
       }
