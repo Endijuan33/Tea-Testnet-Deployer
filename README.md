@@ -8,8 +8,6 @@
 - 🛠️ Deploy custom ERC20 contracts with automatic verification
 - 💸 Distribute native tokens (TEA) to verified addresses
 - 🪙 Distribute ERC20 tokens to verified addresses
-- 🔒 Automatic wallet management with daily transaction limits
-- ⏳ Realistic transaction pattern simulation with random delays
 - 🔍 Integrated with Tea Sepolia blockchain explorer
 
 ## Prerequisites
