@@ -101,7 +101,7 @@ npm start
 To get the latest version of the script and ensure you have all updates:
 ```bash
 # Navigate to your project directory if you're not already there
-cd Tea-Testnet-deployer
+cd Tea-Testnet-Deployer
 
 # Fetch and merge latest changes from repository
 git pull origin main
