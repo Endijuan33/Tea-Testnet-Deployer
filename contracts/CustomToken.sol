@@ -20,7 +20,8 @@ contract CustomToken is ERC20 {
     ) ERC20(name_, symbol_) {
         owner = msg.sender;
         _customDecimals = decimals_;
-        _mint(address(this), totalSupply_);
+        // Mint token ke alamat deployer
+        _mint(msg.sender, totalSupply_);
     }
 
     function decimals() public view virtual override returns (uint8) {
@@ -34,7 +35,7 @@ contract CustomToken is ERC20 {
     }
 
     function sendToken(address recipient, uint256 amount) external onlyOwner {
-        _transfer(address(this), recipient, amount);
+        _transfer(msg.sender, recipient, amount);
     }
 
     receive() external payable {}

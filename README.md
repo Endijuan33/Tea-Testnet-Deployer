@@ -1,28 +1,28 @@
-# Somnia-Testnet-deployer
+# Tea-Testnet-deployer
 
  **Automated Token Deployment and Distribution Tool**
 
-- A CLI tool for deploying ERC20 token contracts and distributing tokens/native assets on the Somnia Testnet.
+- A CLI tool for deploying ERC20 token contracts and distributing tokens/native assets on the Tea Sepolia Testnet.
 
 ## Key Features
 - 🛠️ Deploy custom ERC20 contracts with automatic verification
-- 💸 Distribute native tokens (STT) to random addresses with random values
-- 🪙 Distribute ERC20 tokens to random addresses
+- 💸 Distribute native tokens (TEA) to verified addresses
+- 🪙 Distribute ERC20 tokens to verified addresses
 - 🔒 Automatic wallet management with daily transaction limits
 - ⏳ Realistic transaction pattern simulation with random delays
-- 🔍 Integrated with Somnia blockchain explorer
+- 🔍 Integrated with Tea Sepolia blockchain explorer
 
 ## Prerequisites
 - Node.js v18+
 - npm v9+
 - Hardhat (will be installed automatically if not present)
-- Blockchain account with STT balance
+- Blockchain account with TEA balance
 
 ## Installation
 1. Clone repository:
 ```bash
-git clone https://github.com/Endijuan33/Somnia-Testnet-deployer.git
-cd Somnia-Testnet-deployer
+git clone https://github.com/Endijuan33/Tea-Testnet-Deployer.git
+cd Tea-Testnet-Deployer
 ```
 
 2. Install dependencies:
@@ -33,9 +33,9 @@ npm install
 3. Copy .env.example to .env and configure required settings:
 ```bash
 MAIN_PRIVATE_KEY=0xyour_wallet_private_key
-RPC_URL=https://dream-rpc.somnia.network,https://rpc.ankr.com/somnia_testnet,https://somnia-poc.w3us.site/api/eth-rpc
-CHAIN_ID=50312
-EXPLORER_URL=https://shannon-explorer.somnia.network/
+RPC_URL=https://tea-sepolia.g.alchemy.com/public
+CHAIN_ID=10218
+EXPLORER_URL=https://sepolia.tea.xyz/
 CONTRACT_ADDRESS=
 ```
 
@@ -43,10 +43,10 @@ CONTRACT_ADDRESS=
 | Variable            | Description                                      | Example Value                         |
 |---------------------|--------------------------------------------------|---------------------------------------|
 | MAIN_PRIVATE_KEY    | Main wallet's private key                        | 0xabc123...                           |
-| RPC_URL             | Somnia network RPC URL                           | https://dream-rpc.somnia.network      |
-| CHAIN_ID            | Somnia Testnet chain ID                          | 50312                                 |
+| RPC_URL             | Tea network RPC URL                              | https://tea-sepolia.g.alchemy.com/public |
+| CHAIN_ID            | Tea Testnet chain ID                             | 10218                                 |
 | CONTRACT_ADDRESS    | Contract address (auto-filled after deployment)  | 0x...                                 |
-| EXPLORER_URL        | Blockchain explorer URL                          | https://shannon-explorer.somnia.network |
+| EXPLORER_URL        | Blockchain explorer URL                          | https://sepolia.tea.xyz/              |
 
 ## Usage
 Run command:
@@ -68,24 +68,23 @@ Observe daily transaction limits and ensure the main wallet has sufficient balan
    - Automatic contract verification after deployment
 
 2. **Send Native Token (STT)**
-   - Distribute STT to random addresses
-   - Random value: 0.001-0.0025 STT per transaction
-   - Daily limit: 5,000 transactions/day
+   - Distribute TEA to verified addresses
+   - Daily limit: 5,000 transactions/day or based on addresses.txt files
    - Random delay between 15-60 seconds between transactions
 
 3. **Send ERC20 Tokens**
-   - Distribute tokens to random addresses
+   - Distribute tokens to verified addresses
    - Input tokens amount per transaction
    - Uses deployed contract
    - Same daily limits as native token distribution
 
 ## Security
-- 🚫 Never share `.env` or `random_wallets.json` files
+- 🚫 Never share `.env` files
 - 🔐 Private keys stored only in local environment variables
 - ⚠️ Use responsibly and comply with network rules - DYOR!
 
 ## Important Notes
-- Ensure main wallet has sufficient STT balance
+- Ensure main wallet has sufficient TEA balance
 - Contract verification requires Hardhat - will be auto-installed
 - Failed transactions will be reported without stopping the process
 
@@ -102,7 +101,7 @@ npm start
 To get the latest version of the script and ensure you have all updates:
 ```bash
 # Navigate to your project directory if you're not already there
-cd Somnia-Testnet-deployer
+cd Tea-Testnet-deployer
 
 # Fetch and merge latest changes from repository
 git pull origin main
@@ -113,13 +112,13 @@ npm install
 
 
 ## License
-[MIT](https://github.com/Endijuan33/Somnia-Testnet-deployer/blob/main/LICENSE) License
+[MIT](https://github.com/Endijuan33/Tea-Testnet-deployer/blob/main/LICENSE) License
 
 ## Disclaimer
 ⚠️ **Educational Use Only** 
-- This script is provided **exclusively for educational and testing purposes** on the Somnia Testnet
+- This script is provided **exclusively for educational and testing purposes** on the Tea Testnet
 - All transactions use **testnet assets** with no real monetary value
-- Not affiliated with or endorsed by Somnia or any blockchain entity
+- Not affiliated with or endorsed by Tea or any blockchain entity
 - NO WARRANTIES expressed or implied - use at your own risk
 - Developers assume no liability for:
   - Any financial losses

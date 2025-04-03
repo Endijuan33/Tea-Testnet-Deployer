@@ -3,23 +3,23 @@ require("@nomicfoundation/hardhat-verify");
 module.exports = {
   solidity: "0.8.28",
   networks: {
-    "somnia-testnet": {
-      url: process.env.RPC_URL || "https://dream-rpc.somnia.network",
-      chainId: 50312,
+    "tea-sepolia": {
+      url: "https://tea-sepolia.g.alchemy.com/public",
+      chainId: 10218,
       accounts: [process.env.MAIN_PRIVATE_KEY]
     }
   },
   etherscan: {
     apiKey: {
-      "somnia-testnet": process.env.EXPLORER_API_KEY || "empty"
+      "tea-sepolia": process.env.EXPLORER_API_KEY || "empty"
     },
     customChains: [
       {
-        network: "somnia-testnet",
-        chainId: 50312,
+        network: "tea-sepolia",
+        chainId: 10218,
         urls: {
-          apiURL: "https://shannon-explorer.somnia.network/api",
-          browserURL: "https://shannon-explorer.somnia.network/"
+          apiURL: "https://sepolia.tea.xyz/api",
+          browserURL: "https://sepolia.tea.xyz/"
         }
       }
     ]

@@ -1,7 +1,7 @@
 {
-  "name": "somnia-testnet",
+  "name": "tea-sepolia-testnet",
   "version": "1.0.0",
-  "description": "Automated script for Somnia Testnet: deploy contract, send native token (STT), and send ERC20 token randomly.",
+  "description": "Automated script for Tea-Sepolia Testnet: deploy contract, send native token (TEA), and send ERC20 token to verified addresses.",
   "main": "main.js",
   "type": "module",
   "scripts": {

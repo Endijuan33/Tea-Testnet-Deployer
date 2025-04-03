@@ -1,0 +1,8 @@
+.env
+cache
+artifacts
+package-lock.json
+node_modules
+processed_addresses.json
+daily_counter.json
+main.js.bak
